@@ -1,11 +1,11 @@
 'use strict';
 
 module.exports = {
-  secure: {
-    ssl: true,
-    privateKey: './config/sslcerts/key.pem',
-    certificate: './config/sslcerts/cert.pem'
-  },
+  // secure: {
+  //   ssl: true,
+  //   privateKey: './config/sslcerts/key.pem',
+  //   certificate: './config/sslcerts/cert.pem'
+  // },
   sessionSecret: process.env.SESSION_SECRET || 'trich12345',
   port: process.env.PORT || 8443,
   db: {
