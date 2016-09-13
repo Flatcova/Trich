@@ -1,7 +1,7 @@
 {
   "name": "trych",
   "description": "full meanstack web store",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "meanjs-version": "0.4.2",
   "private": false,
   "author": "",
