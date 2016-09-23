@@ -132,7 +132,7 @@ module.exports = function(passport) {
     },
 
     // facebook will send back the token and profile
-    function(token, refreshToken, profile, done) {
+    function(req, token, refreshToken, profile, done) {
         // asynchronous
         process.nextTick(function() {
 
@@ -211,7 +211,7 @@ module.exports = function(passport) {
         passReqToCallback : true
 
     },
-    function(token, tokenSecret, profile, done) {
+    function(req, token, tokenSecret, profile, done) {
 
         // make the code asynchronous
     // User.findOne won't fire until we have all our data back from Twitter
@@ -290,7 +290,7 @@ module.exports = function(passport) {
         passReqToCallback : true
 
     },
-    function(token, refreshToken, profile, done) {
+    function(req, token, refreshToken, profile, done) {
 
         // make the code asynchronous
         // User.findOne won't fire until we have all our data back from Google
