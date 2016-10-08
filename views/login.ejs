@@ -7,8 +7,38 @@
     <style>
         body        { padding-top:80px; }
     </style>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+  <!-- Google Material Icons -->
+  <link href="css/vendor/material-icons.min.css" rel="stylesheet" media="screen">
+
+  <!-- Brand Icons -->
+  <link href="css/vendor/socicon.min.css" rel="stylesheet" media="screen">
+
+  <!-- Bootstrap -->
+  <link href="css/vendor/bootstrap.min.css" rel="stylesheet" media="screen">
+
+  <!-- Theme Styles -->
+  <link href="css/theme.min.css" rel="stylesheet" media="screen">
+
+  <!-- Page Preloading -->
+  <script src="js/vendor/page-preloading.js"></script>
+
+  <!-- Modernizr -->
+  <script src="js/vendor/modernizr.custom.js"></script>
 </head>
-<body>
+<body class="page-preloading">
+
+  <!-- Page Pre-Loader -->
+  <div class="page-preloader">
+    <div class="preloader">
+      <img src="img/preloader.gif" alt="Preloader">
+    </div>
+  </div><!-- .page-preloader -->
+
+  <!-- Page Wrapper -->
+  <div class="page-wrapper">
 <div class="container">
 
 <div class="col-sm-6 col-sm-offset-3">
@@ -48,7 +78,69 @@
     <p>Forgot your password? <a href="/#">Recuest New Password</a>.</p>
 
 </div>
-
+    <section class="container padding-top-3x padding-bottom-2x">
+      <h1>User Account</h1>
+      <div class="row padding-top">
+        <div class="col-md-4 padding-bottom">
+          <h3>Login</h3>
+          <form method="post" class="login-form">
+            <input type="text" class="form-control" placeholder="Username" required>
+            <input type="password" class="form-control" placeholder="Password" required>
+            <div class="form-footer">
+              <div class="rememberme">
+                <label class="checkbox">
+                  <input type="checkbox" checked> Remember me
+                </label>
+              </div>
+              <div class="form-submit">
+                <button type="submit" class="btn btn-primary btn-block waves-effect waves-light">Login</button>
+              </div>
+            </div>
+          </form><!-- .login-form -->
+        </div><!-- .col-md-4 -->
+        <div class="col-md-4 col-md-offset-1">
+          <h3>Register</h3>
+          <div class="inner">
+            <form method="post" class="login-form">
+              <input type="email" class="form-control" placeholder="E-mail" required>
+              <input type="password" class="form-control" placeholder="Password" required>
+              <input type="password" class="form-control" placeholder="Repeat password" required>
+              <div class="form-footer">
+                <div class="rememberme"></div>
+                <div class="form-submit">
+                  <button type="submit" class="btn btn-primary btn-block waves-effect waves-light">Sign up</button>
+                </div>
+              </div>
+            </form><!-- .login-form -->
+          </div><!-- .inner -->
+        </div><!-- .col-md-4.col-md-offset-1 -->
+        <div class="col-md-3 padding-top-2x">
+          <a href="#" class="social-signup-btn ssb-facebook">
+            <i class="socicon-facebook"></i>
+            <span>Signup with Facebook</span>
+          </a>
+          <a href="#" class="social-signup-btn ssb-google">
+            <i class="socicon-googleplus"></i>
+            <span>Signup with Google+</span>
+          </a>
+          <a href="#" class="social-signup-btn ssb-twitter">
+            <i class="socicon-twitter"></i>
+            <span>Signup with Twitter</span>
+          </a>
+        </div><!-- .col-md-3 -->
+      </div><!-- .row -->
+    </section><!-- .container -->
+      </div>
 </div>
+ <!-- JavaScript (jQuery) libraries, plugins and custom scripts -->
+  <script src="js/vendor/jquery-2.1.4.min.js"></script>
+  <script src="js/vendor/bootstrap.min.js"></script>
+  <script src="js/vendor/smoothscroll.js"></script>
+  <script src="js/vendor/velocity.min.js"></script>
+  <script src="js/vendor/waves.min.js"></script>
+  <script src="js/vendor/icheck.min.js"></script>
+  <script src="js/vendor/owl.carousel.min.js"></script>
+  <script src="js/vendor/nouislider.min.js"></script>
+  <script src="js/scripts.js"></script>
 </body>
 </html>
