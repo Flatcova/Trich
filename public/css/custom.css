@@ -1,0 +1,13 @@
+/** Your theme modifications here **/
+body{
+	background-color: #8e8e8e;
+	color: #6eb752;
+}
+.navbar-default{
+	background-color: #000;
+	border-bottom-color: #6eb752;
+}
+#map {
+        height: 200px;
+        width: 100%;
+}
