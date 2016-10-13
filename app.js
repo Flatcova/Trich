@@ -18,14 +18,17 @@ var User = require('./models/user');
 // SETTING ROUTES
 
 var main = require('./routes/main/index');
-// var category = require('./routes/main/category');
-// var product = require('./routes/main/product');
-// var cart = require('./routes/main/cart');
+
+var catalog = require('./routes/products/catalog');
+var product = require('./routes/products/product');
 
 var signup = require('./routes/users/signup');
 var login = require('./routes/users/login');
 var logout = require('./routes/users/logout');
 var profile = require('./routes/users/profile');
+
+// var cart = require('./routes/main/users/cart');
+// var cart = require('./routes/main/users/orders');
 // var whishlist = require('./routes/users/whishlist');
 // var history = require('./routes/users/history');
 
@@ -74,10 +77,19 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(morgan('dev'));
 
 app.use('/', main);
+
+app.use('/catalog', catalog);
+app.use('/product', product);
+
 app.use('/signup', signup);
 app.use('/login', login);
 app.use('/logout', logout);
 app.use('/profile', profile);
+
+// app.use('/cart', cart);
+// app.use('/whishlist', whishlist);
+// app.use('/orders', orders);
+// app.use('/history', history);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

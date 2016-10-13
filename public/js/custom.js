@@ -1,4 +1,4 @@
-function initMap() {
+window.initMap =function() {
         var point = {lat: 25.725257, lng: -100.313633};
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 17,
