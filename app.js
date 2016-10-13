@@ -25,6 +25,7 @@ var main = require('./routes/main/index');
 var signup = require('./routes/users/signup');
 var login = require('./routes/users/login');
 var logout = require('./routes/users/logout');
+var profile = require('./routes/users/profile');
 // var whishlist = require('./routes/users/whishlist');
 // var history = require('./routes/users/history');
 
@@ -76,6 +77,7 @@ app.use('/', main);
 app.use('/signup', signup);
 app.use('/login', login);
 app.use('/logout', logout);
+app.use('/profile', profile);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

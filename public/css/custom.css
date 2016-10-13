@@ -11,3 +11,6 @@ body{
         height: 200px;
         width: 100%;
 }
+.yamm .dropdown.yamm-fw .dropdown-menu.account{
+	left: auto;
+}

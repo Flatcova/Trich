@@ -8,7 +8,7 @@ function initMap() {
           position: point,
           map: map
         });
-      }
+      };
 
 window.fbAsyncInit = function() {
     FB.init({
