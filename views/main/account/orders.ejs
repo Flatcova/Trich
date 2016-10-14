@@ -1,0 +1,50 @@
+<% layout('layout') -%>
+
+<div id="all">
+        <div id="content">
+            <div class="container">
+
+                <div class="col-md-3">
+                    <!-- *** CUSTOMER MENU ***
+ _________________________________________________________ -->
+                    <div class="panel panel-default sidebar-menu">
+
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Menú de Usuario</h3>
+                        </div>
+
+                        <div class="panel-body">
+
+                            <ul class="nav nav-pills nav-stacked">
+                                <li>
+                                    <a href="/profile"><i class="fa fa-user"></i> Mi Cuenta</a>
+                                </li>
+                                <li>
+                                    <a href="/wishlist"><i class="fa fa-heart"></i> Mi Lista de Deseos</a>
+                                </li>
+                                <li class="active">
+                                    <a href="/orders"><i class="fa fa-list"></i> Mis Ordenes</a>
+                                </li>
+                                <% if (user.profile.admin == true) { %>
+                                <li>
+                                    <a href="/admin"><i class="fa fa-plus-square"></i> Agregar Productos</a>
+                                </li>
+                                <% } %>
+                                <li>
+                                    <a href="/logout"><i class="fa fa-sign-out"></i> Cerrar Sesion</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <!-- /.col-md-3 -->
+
+                    <!-- *** CUSTOMER MENU END *** -->
+                </div>
+
+                <div class="col-md-9"></div>
+                </div>
+			</div>
+            <!-- /.container -->
+        </div>
+</div>
