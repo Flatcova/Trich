@@ -18,6 +18,7 @@ var User = require('./models/user');
 // SETTING ROUTES
 
 var main = require('./routes/main/index');
+var admin = require('./routes/main/admin/add');
 
 var catalog = require('./routes/products/catalog');
 var product = require('./routes/products/product');
@@ -28,8 +29,8 @@ var logout = require('./routes/users/logout');
 var profile = require('./routes/users/profile');
 
 // var cart = require('./routes/main/users/cart');
-// var cart = require('./routes/main/users/orders');
-// var whishlist = require('./routes/users/whishlist');
+var orders = require('./routes/users/orders');
+var wishlist = require('./routes/users/wishlist');
 // var history = require('./routes/users/history');
 
 var configDB = require('./config/database.js');
@@ -69,6 +70,10 @@ app.use(function(req, res, next){
   res.locals.user = req.user;
   next();
 });
+app.use(function(req, res, next){
+  res.locals.product = req.product;
+  next();
+});
 
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -77,6 +82,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(morgan('dev'));
 
 app.use('/', main);
+// app.use('/admin', add_product);
+app.use('/admin', admin);
 
 app.use('/catalog', catalog);
 app.use('/product', product);
@@ -87,8 +94,8 @@ app.use('/logout', logout);
 app.use('/profile', profile);
 
 // app.use('/cart', cart);
-// app.use('/whishlist', whishlist);
-// app.use('/orders', orders);
+app.use('/wishlist', wishlist);
+app.use('/orders', orders);
 // app.use('/history', history);
 
 // catch 404 and forward to error handler

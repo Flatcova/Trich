@@ -29,7 +29,7 @@ router.post('/', function(req, res, next){
 			// save the user
 			newUser.save(function(err) {
 		    	if (err) next(err);
-		    	return res.redirect('/');
+		    	return res.redirect('/login');
 			});
 		}
 	});

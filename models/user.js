@@ -5,6 +5,7 @@ var Schema = mongoose.Schema;
 // define the schema for our user model
 var userSchema = Schema({
 	profile: {
+		admin : {type:Boolean, default: false},
 		local            : {
 	        name 	     : String,
 	        email        : {type:String, unique: true},
