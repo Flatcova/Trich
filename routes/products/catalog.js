@@ -1,10 +1,15 @@
 var express = require('express');
 var router = express.Router();
+var Products = require('../../models/product');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('main/products/catalog', {
-  	errors: req.flash('errors')
+  Products.find({}, function(err, products){
+  	if (err) return next(err);
+  	res.render('main/products/catalog', {
+  		products: products,
+	  	errors: req.flash('errors')
+	  });
   });
 });
 
