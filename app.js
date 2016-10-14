@@ -70,10 +70,6 @@ app.use(function(req, res, next){
   res.locals.user = req.user;
   next();
 });
-app.use(function(req, res, next){
-  res.locals.product = req.product;
-  next();
-});
 
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -86,7 +82,7 @@ app.use('/', main);
 app.use('/admin', admin);
 
 app.use('/catalog', catalog);
-app.use('/product', product);
+app.use('/product', express.static(__dirname + '/public'), product);
 
 app.use('/signup', signup);
 app.use('/login', login);
