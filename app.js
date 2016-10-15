@@ -81,7 +81,7 @@ app.use('/', main);
 // app.use('/admin', add_product);
 app.use('/admin', admin);
 
-app.use('/catalog', catalog);
+app.use('/catalog/page', express.static(__dirname + '/public'), catalog);
 app.use('/product', express.static(__dirname + '/public'), product);
 
 app.use('/signup', signup);
