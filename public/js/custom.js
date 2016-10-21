@@ -25,3 +25,34 @@ window.fbAsyncInit = function() {
   js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.8&appId=122795888178850";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
+
+var client = algoliasearch('MEZ3TXMHN8', '89b9a2a470865ef255679c64161dcb34')
+  var index = client.initIndex('Trich_Products');
+  autocomplete('#search-input', { hint: false }, [
+    {
+      source: autocomplete.sources.hits(index, { hitsPerPage: 5 }),
+      displayKey: 'name', 
+      templates: {
+        suggestion: function(suggestion) { 
+          return suggestion._highlightResult.name.value;
+        }
+      }
+    }
+  ]).on('autocomplete:selected', function(event, suggestion, dataset) {
+    window.location.href = '/product/'+suggestion._id.$oid;
+  });
+var client = algoliasearch('MEZ3TXMHN8', '89b9a2a470865ef255679c64161dcb34')
+  var index = client.initIndex('Trich_Products');
+  autocomplete('#search2-input', { hint: false }, [
+    {
+      source: autocomplete.sources.hits(index, { hitsPerPage: 5 }),
+      displayKey: 'name',
+      templates: {
+        suggestion: function(suggestion) {
+          return suggestion._highlightResult.name.value;
+        }
+      }
+    }
+  ]).on('autocomplete:selected', function(event, suggestion, dataset) {
+    window.location.href = '/product/'+suggestion._id.$oid;
+  });
