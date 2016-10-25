@@ -11,6 +11,9 @@ var flash = require('express-flash');
 var MongoStore = require('connect-mongo')(session);
 var passport = require('passport');
 
+// MIDDLEWARES
+var items = require('./middlewares/items-mid');
+
 // REQUEST MODELS
 
 var User = require('./models/user');
@@ -27,9 +30,8 @@ var signup = require('./routes/users/signup');
 var login = require('./routes/users/login');
 var logout = require('./routes/users/logout');
 var profile = require('./routes/users/profile');
-
-// var cart = require('./routes/main/users/cart');
-var orders = require('./routes/users/orders');
+var cart = require('./routes/users/cart');
+// var orders = require('./routes/users/orders');
 var wishlist = require('./routes/users/wishlist');
 // var history = require('./routes/users/history');
 
@@ -71,6 +73,8 @@ app.use(function(req, res, next){
   next();
 });
 
+app.use(items);
+
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -89,9 +93,9 @@ app.use('/login', login);
 app.use('/logout', logout);
 app.use('/profile', profile);
 
-// app.use('/cart', cart);
+app.use('/cart', cart);
 app.use('/wishlist', wishlist);
-app.use('/orders', orders);
+// app.use('/orders', orders);
 // app.use('/history', history);
 
 // catch 404 and forward to error handler

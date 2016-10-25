@@ -9,6 +9,7 @@
                     <img src="img/logo-main.png" alt="Trich logo" class="hidden-xs">
                     <img src="img/logo-second.png" alt="Trich logo" class="visible-xs"><span class="sr-only">Trich - Pagina de inicio</span>
                 </a>
+
                 <div class="navbar-buttons">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">
                         <span class="sr-only">Toggle navigation</span>
@@ -18,11 +19,19 @@
                         <span class="sr-only">Toggle search</span>
                         <i class="fa fa-search"></i>
                     </button>
-                    <a href="basket.html">
+                    <% if (!user) { %>
+                    <a href="/cart">
                         <button type="button" class="navbar-toggle">
                             <i class="fa fa-shopping-cart"></i>  <span class="hidden-xs">0 Carrito</span>
                         </button>
                     </a>
+                    <% }else { %>
+                    <a href="/cart">
+                        <button type="button" class="navbar-toggle">
+                            <i class="fa fa-shopping-cart"></i>  <span class="hidden-xs"><%= items %> Carrito</span>
+                        </button>
+                    </a>
+                    <% }%>
                 </div>
             </div>
             <!--/.navbar-header -->
@@ -82,12 +91,10 @@
 
             <div class="navbar-buttons">
 
-                <div class="navbar-collapse collapse right" id="basket-overview">
-                    <a href="basket.html" class="btn navbar-btn btn-primary"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">0 Carrito</span></a>
-                </div>
-                <!--/.nav-collapse -->
-
                 <% if (!user) { %>
+                    <div class="navbar-collapse collapse right" id="basket-overview">
+                        <a href="/cart" class="btn navbar-btn btn-primary"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">0 Carrito</span></a>
+                    </div>
                     <div class="navbar-collapse collapse right" id="search-not-mobile">
                         <button type="button" class="btn navbar-btn btn-primary" data-toggle="modal" data-target="#login-modal">
                             <span class="sr-only">Log In/Sign Up</span>
@@ -95,6 +102,9 @@
                         </button>
                     </div>
                 <% }else { %>
+                    <div class="navbar-collapse collapse right" id="basket-overview">
+                        <a href="/cart" class="btn navbar-btn btn-primary"><i class="fa fa-shopping-cart"></i><span class="hidden-sm"><%= items %> Carrito</span></a>
+                    </div>
                     <div class="navbar-collapse collapse right" id="navigation">
 
                         <ul class="nav navbar-nav navbar-left">
@@ -139,6 +149,7 @@
                     <form class="navbar-form" role="search">
                         <div>
                             <input type="text"class="form-control" placeholder="busca nuestros productos" id="search-input" />
+                            <!-- <p>Powered by</p><img src="img/Algolia_logo.png"> -->
                         </div>
                     </form>
                 </div>
@@ -148,6 +159,7 @@
                 <form class="navbar-form" role="search">
                     <div>
                         <input type="text"class="form-control" placeholder="busca nuestros productos" id="search2-input" />
+                        <!-- <p>Powered by</p><img src="img/Algolia_logo.png"> -->
                     </div>
                 </form>
 

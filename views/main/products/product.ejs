@@ -20,21 +20,41 @@
 	                        </div>
                         </div>
                         <div class="col-sm-6">
-                            <div class="box">
-                                <h1 class="text-center"><%= product.name %></h1>
-                                <p class="price">$<%= product.price %> MX.</p>
+                            <form method="post">
+                                <div class="box">
+                                    <h1 class="text-center"><%= product.name %></h1>
+                                    <p class="price">$<%= product.price %> MX.</p>
 
-                                <div class="box" id="details">
-			                        <p>
-			                        <%= product.description %>
-			                        </p>
-			                    </div>
+                                    <input type="hidden" name="product_id" value="<%= product._id %>">
+                                    <input type="hidden" name="TotalPrice" id="TotalPrice" value="<%= product.price %>">
+                                    <input type="hidden" name="UnitaryPrice" id="UnitaryPrice" value="<%= product.price %>">
 
-                                <p class="text-center buttons">
-                                    <a href="basket.html" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Agregar al Carrito</a> 
-                                    <a href="basket.html" class="btn btn-default"><i class="fa fa-heart"></i> Agregar a Lista de deseos</a>
-                                </p>
-                            </div>
+                                    <p class="text-center buttons">
+                                        <input type="hidden" name="quantity" id="quantity" value="1">
+                                        <button type="button" id="minus" class="btn btn-default"><i class="fa fa-minus"></i></button>
+                                        <button type="button" id="total" class="btn btn-primary">1</button>
+                                        <button type="button" id="plus" class="btn btn-default"><i class="fa fa-plus"></i></button>
+                                    </p>
+
+                                    <div class="box" id="details">
+    			                        <p>
+    			                        <%= product.description %>
+    			                        </p>
+    			                    </div>
+                                    <% if(user) { %>
+                                        <p class="text-center buttons">
+                                            <button type="submit">
+                                            <a class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Agregar al Carrito</a>
+                                            </button>
+                                            <a href="basket.html" class="btn btn-default"><i class="fa fa-heart"></i> Agregar a Lista de deseos</a>
+                                        </p>
+                                    <% }else{ %>
+                                        <p class="text-center buttons">
+                                            <a href="/signup" class="btn btn-primary"><i class="fa fa-user-plus"></i> Registrate para comenzar a comprar</a>
+                                        </p>
+                                    <% } %>
+                                </div>
+                            </form>
 	                        <div class="row hidden-xs hidden-sm" id="thumbs">
 	                            <div class="col-xs-4">
 	                                <a href="<%= product.image %>" class="thumb">

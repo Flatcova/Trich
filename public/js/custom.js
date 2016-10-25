@@ -18,6 +18,37 @@ window.fbAsyncInit = function() {
     });
   };
 
+$(document).on('click', '#plus', function(e){
+  e.preventDefault();
+  var TotalPrice = parseFloat($('#TotalPrice').val());
+  var quantity = parseInt($('#quantity').val());
+
+  TotalPrice += parseFloat($('#UnitaryPrice').val());
+  quantity ++;
+
+  $('#quantity').val(quantity);
+  $('#TotalPrice').val(TotalPrice.toFixed(2));
+  $('#total').html(quantity);
+});
+
+$(document).on('click', '#minus', function(e){
+  e.preventDefault();
+  var TotalPrice = parseFloat($('#TotalPrice').val());
+  var quantity = parseInt($('#quantity').val());
+
+  if (quantity == 1) {
+    TotalPrice = parseFloat($('#TotalPrice').val());
+    quantity = 1;
+  }else{
+    TotalPrice -= parseFloat($('#UnitaryPrice').val());
+    quantity -= 1;
+  }
+
+  $('#quantity').val(quantity);
+  $('#TotalPrice').val(TotalPrice.toFixed(2));
+  $('#total').html(quantity);
+});
+
 (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
