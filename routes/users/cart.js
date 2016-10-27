@@ -5,7 +5,7 @@ var Cart = require('../../models/cart');
 /* GET home page. */
 router.get('/', function(req, res, next) {
 	if (!req.user) {
-		return res.redirect('/');
+		return res.redirect('/login');
 	}else{
 		Cart
 			.findOne({ owner: req.user._id })

@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var User = require('../../models/user');
 var Products = require('../../models/product');
 var Cart = require('../../models/cart');
 
@@ -31,4 +32,17 @@ router.post('/:id', function(req, res, next){
 	});
 });
 
+router.post('/:id/wishlist', function(req, res, next){
+	User.findOne({ id: req.user._id }, function(err, user){
+
+		user.wishlist.push({
+			items: req.body.productid,
+		});
+
+		user.save(function(err){
+			if (err) return next(err);
+			return res.redirect('/wishlist');
+		});
+	});
+});
 module.exports = router;

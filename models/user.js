@@ -4,6 +4,9 @@ var Schema = mongoose.Schema;
 
 // define the schema for our user model
 var userSchema = Schema({
+	wishlist: [{
+		items: {type: Schema.Types.ObjectId, ref: 'Product'},
+	}],
 	profile: {
 		admin : {type:Boolean, default: false},
 		local            : {
@@ -29,17 +32,11 @@ var userSchema = Schema({
 	        email        : String,
 	        name         : String
 	    }
-	},
-	history: [{
-		date: Date,
-		price: {type: Number, default: 0},
-		// item: {type: Schema.Types.ObjectId, ref: ''}
-	}],
-	// cart: [{
-
-	// }],
-	// whistlist: [{
-
+	}
+	// history: [{
+	// 	date: Date,
+	// 	price: {type: Number, default: 0},
+	//  item: {type: Schema.Types.ObjectId, ref: ''}
 	// }],
 });
 
