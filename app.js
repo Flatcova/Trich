@@ -22,6 +22,7 @@ var User = require('./models/user');
 
 var main = require('./routes/main/index');
 var admin = require('./routes/main/admin/add');
+var comments = require('./routes/main/comments');
 
 var catalog = require('./routes/products/catalog');
 var product = require('./routes/products/product');
@@ -41,6 +42,7 @@ var app = express();
 var engine = require('ejs-mate');
 
 // configuration ===============================================================
+// 'mongodb://localhost/myapp' o configDB.url
 mongoose.connect(configDB.url, function(err){
   if (!err)
     console.log('Connected to database');
@@ -64,6 +66,7 @@ app.use(session({
   saveUnitialized: true,
   secret: "T^!c4",
   store: new MongoStore({url: configDB.url, autoReconnect:true})
+  // configDB.url
 }));
 app.use(flash());
 app.use(passport.initialize());
@@ -82,7 +85,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(morgan('dev'));
 
 app.use('/', main);
-// app.use('/admin', add_product);
+app.use('/comments', comments);
 app.use('/admin', admin);
 
 app.use('/catalog/page', express.static(__dirname + '/public'), catalog);

@@ -48,7 +48,7 @@
                                             </button>
                                         </p>
                                     </form>
-                                    <!-- <form method="post" action="/product/<%= product._id %>/wishlist"> -->
+                                    <form method="post" action="/product/<%= product._id %>/wishlist">
                                         <input type="hidden" name="productid" value="<%= product._id %>">
 
                                         <p class="text-center buttons">
@@ -56,7 +56,7 @@
                                                 <a class="btn btn-default"><i class="fa fa-heart"></i> Agregar a Lista de deseos</a>
                                             </button>
                                         </p>
-                                    <!-- </form> -->
+                                    </form>
                                     <% }else{ %>
                                         <p class="text-center buttons">
                                             <a href="/signup" class="btn btn-primary"><i class="fa fa-user-plus"></i> Registrate para comenzar a comprar</a>

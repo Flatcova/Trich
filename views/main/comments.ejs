@@ -1,0 +1,94 @@
+<% layout('layout') -%>
+<div id="all">
+	<div id="content">
+		<div class="container">
+			<div class="col-sm-9" id="blog-post">
+				<div class="box">
+					
+					<div id="comments" data-animate="fadeInUp">
+						<h4><%= comments[0].comment.length %> comentarios</h4>
+						<% for(var i=0; i<comments[0].comment.length; i++) { %>
+						<div class="row comment">
+							<div class="col-sm-6">
+								<h5>Nombre: <%= comments[0].comment[i].name %></h5>
+								<p class="posted"><i class="fa fa-clock-o"></i> <%= comments[0].comment[i].date %>
+									<br>
+								Estrellas: <%= comments[0].comment[i].grade %></p>
+								<p>Commentario: <br><%= comments[0].comment[i].comment %></p>
+							</div>
+						</div>
+						<hr>
+						<!-- /.comment -->
+						<% } %>
+					</div>
+					<!-- /#comments -->
+
+					<div id="comment-form" data-animate="fadeInUp">
+
+						<h4>Dejanos tu opinion</h4>
+
+						<form method="post">
+							<div class="row">
+
+								<div class="col-md-12">
+									<div class="form-group">
+										<label for="name">Nombre <span class="required">*</span>
+										</label>
+										<input type="text" class="form-control" id="name" name="name">
+									</div>
+								</div>
+
+							</div>
+
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label for="email">Calificacion <span class="required">*</span>
+										</label>
+										<br>
+										<span class="rating" class="form-control">
+										    <input type="radio" class="rating-input"
+										        id="rating-input-1-5" name="grade" value="5">
+										    <label for="rating-input-1-5" class="rating-star"></label>
+										    <input type="radio" class="rating-input"
+										        id="rating-input-1-4" name="grade" value="4">
+										    <label for="rating-input-1-4" class="rating-star"></label>
+										    <input type="radio" class="rating-input"
+										        id="rating-input-1-3" name="grade" value="3">
+										    <label for="rating-input-1-3" class="rating-star"></label>
+										    <input type="radio" class="rating-input"
+										        id="rating-input-1-2" name="grade" value="2">
+										    <label for="rating-input-1-2" class="rating-star"></label>
+										    <input type="radio" class="rating-input"
+										        id="rating-input-1-1" name="grade" value="1">
+										    <label for="rating-input-1-1" class="rating-star"></label>
+										</span>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label for="comment">Commentario <span class="required">*</span>
+										</label>
+										<textarea class="form-control" id="comment" rows="4" name="comment"></textarea>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-md-12 text-right">
+									<button type="submit" class="btn btn-primary"><i class="fa fa-comment-o"></i> Publicar comentario</button>
+								</div>
+							</div>
+
+
+						</form>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,12 +1,10 @@
 <% layout('layout') -%>
 
 <div id="all">
-        <div id="content">
-            <div class="container">
+    <div id="content">
+        <div class="container">
 
-                <div class="col-md-3">
-                    <!-- *** CUSTOMER MENU ***
- _________________________________________________________ -->
+            <div class="col-md-3">
                     <div class="panel panel-default sidebar-menu">
 
                         <div class="panel-heading">
@@ -37,14 +35,64 @@
                         </div>
 
                     </div>
-                    <!-- /.col-md-3 -->
-
-                    <!-- *** CUSTOMER MENU END *** -->
                 </div>
 
-                <div class="col-md-9"></div>
+                <div class="col-md-9">
+                    <div class="box">
+                        <h1>Lista de deseos</h1>
+                    </div>
+
+                    <% if (message.length > 0) { %>
+                        <div class="alert alert-success alert-dismissible">
+                            <h3><%= message %></h3>
+                        </div>
+                    <% } %>
+
+                    <div class="row products">
+                        <% for(var i=0; i<wish.wishlist.length; i++) { %>
+                        <div class="col-md-3 col-sm-4">
+                            <div class="product">
+                                <div class="flip-container">
+                                    <div class="flipper">
+                                        <div class="front">
+                                            <a href="/product/<%= wish.wishlist[i].items._id %>">
+                                                <img src="<%= wish.wishlist[i].items.image %>" alt="" class="img-responsive">
+                                            </a>
+                                        </div>
+                                        <div class="back">
+                                            <a href="/product/<%= wish.wishlist[i].items._id %>">
+                                                <img src="<%= wish.wishlist[i].items.image %>" alt="" class="img-responsive">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="detail.html" class="invisible">
+                                    <img src="<%= wish.wishlist[i].items.image %>" alt="" class="img-responsive">
+                                </a>
+                                <div class="text">
+                                    <h3><a href="/product/<%= wish.wishlist[i].items._id %>"><%= wish.wishlist[i].items.name %></a></h3>
+                                    <p class="price">$<%= wish.wishlist[i].items.price %></p>
+                                    <p class="buttons">
+                                        <a href="/product/<%= wish.wishlist[i].items._id %>" class="btn btn-default">Mas detalles</a>
+                                        <form method="post" action="/wishlist/remove">
+                                            <input type="hidden" name="item" value="<%= wish.wishlist[i]._id %>">
+
+                                            <p class="text-center buttons">
+                                                <button class="cart_button" type="submit">
+                                                    <a class="btn btn-primary"><i class="fa fa-trash-o"></i>Eliminar</a>
+                                                </button>
+                                            </p>
+                                        </form>
+                                    </p>
+                                </div>
+                                <!-- /.text -->
+                            </div>
+                            <!-- /.product -->
+                        </div>
+                        <% } %>
+                    </div>
                 </div>
-			</div>
-            <!-- /.container -->
+            </div>
         </div>
+    </div>
 </div>
