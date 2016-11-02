@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../../models/user');
+var _ = require('lodash');
 var Products = require('../../models/product');
 var Cart = require('../../models/cart');
 
@@ -17,12 +18,23 @@ router.get('/:id', function(req, res, next) {
 
 router.post('/:id', function(req, res, next){
 	Cart.findOne({ owner: req.user._id }, function(err, cart){
+		console.log(cart);
+		var productIndex = _.findIndex(cart.items, function(found){
+			return found.item == req.body.product_id;
+		});
 
-		cart.items.push({
-			item: req.body.product_id,
-			price: parseFloat(req.body.TotalPrice),
-			quantity: parseInt(req.body.quantity)
-		});	
+		console.log(productIndex);
+		if(productIndex == -1){
+			cart.items.push({
+				item: req.body.product_id,
+				price: parseFloat(req.body.TotalPrice),
+				quantity: parseInt(req.body.quantity)
+			});	
+		} else {
+			cart.items[productIndex].quantity += parseInt(req.body.quantity);
+			cart.items[productIndex].price += parseFloat(req.body.TotalPrice);
+		}
+			
 		cart.total = (cart.total + parseFloat(req.body.TotalPrice)).toFixed(2);
 
 		cart.save(function(err){

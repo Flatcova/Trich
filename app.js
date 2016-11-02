@@ -10,7 +10,7 @@ var session = require('express-session');
 var flash = require('express-flash');
 var MongoStore = require('connect-mongo')(session);
 var passport = require('passport');
-
+var lodash = require('lodash');
 // MIDDLEWARES
 var items = require('./middlewares/items-mid');
 
