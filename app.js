@@ -23,6 +23,7 @@ var User = require('./models/user');
 var main = require('./routes/main/index');
 var admin = require('./routes/main/admin/add');
 var comments = require('./routes/main/comments');
+var contact = require('./routes/main/contact');
 
 var catalog = require('./routes/products/catalog');
 var product = require('./routes/products/product');
@@ -85,6 +86,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(morgan('dev'));
 
 app.use('/', main);
+app.use('/contact', contact);
 app.use('/comments', comments);
 app.use('/admin', admin);
 
