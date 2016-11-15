@@ -8,7 +8,6 @@ var Comments = require('../../models/comments');
 router.get('/', function(req, res, next) {
 	Comments.find({}, function(err, comments){
 	  	if (err) return next(err);
-	  	console.log(comments);
 	  	res.render('main/comments', {
 	  		comments: comments,
 	  		moment: moment,
