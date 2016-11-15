@@ -42,7 +42,7 @@
                     <div class="box">
                         <h1>Pedido #<%= order._id %></h1>
 
-                        <p class="lead">Fue realizado el <strong><%= moment(order.date.postedAt).format("YYYY-MM-DD") %></strong> y se encuentra <strong><%= order.status %></strong>.</p>
+                        <p class="lead">Fue realizado el <strong><%= moment(order.date).format("YYYY-MM-DD") %></strong> y se encuentra <strong><%= order.status %></strong>.</p>
                         <p class="text-muted">Si tienes alguna pregunta, porfavor <a href="/contact">contactanos</a>, estamos para ayudarte.</p>
 
                         <hr>

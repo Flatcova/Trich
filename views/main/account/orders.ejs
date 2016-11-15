@@ -65,7 +65,7 @@
                                     <% for (var i=0; i<orders.length; i++) { %>
                                         <tr>
                                             <th># <%= orders[i]._id %></th>
-                                            <td><%= moment(orders[i].date.postedAt).format("YYYY-MM-DD") %></td>
+                                            <td><%= moment(orders[i].date).format("YYYY-MM-DD") %></td>
                                             <td>$ <%= orders[i].total %></td>
                                             <td><span class="label label-info"><%= orders[i].status %></span>
                                             </td>
