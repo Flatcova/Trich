@@ -1,14 +1,17 @@
+var moment = require('moment');
 var express = require('express');
 var router = express.Router();
 var Comments = require('../../models/comments');
 
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
 	Comments.find({}, function(err, comments){
-		console.log(comments);
 	  	if (err) return next(err);
+	  	console.log(comments);
 	  	res.render('main/comments', {
 	  		comments: comments,
+	  		moment: moment,
 		  	errors: req.flash('errors')
 		  });
 	  });
@@ -22,8 +25,6 @@ router.post('/', function(req, res, next){
 			name: req.body.name,
 			comment: req.body.comment,
 		});
-
-		console.log(comments);
 
 		comments[0].save(function(err){
 			if (err) return next(err);

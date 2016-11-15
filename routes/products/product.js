@@ -18,12 +18,10 @@ router.get('/:id', function(req, res, next) {
 
 router.post('/:id', function(req, res, next){
 	Cart.findOne({ owner: req.user._id }, function(err, cart){
-		console.log(cart);
 		var productIndex = _.findIndex(cart.items, function(found){
 			return found.item == req.body.product_id;
 		});
 
-		console.log(productIndex);
 		if(productIndex == -1){
 			cart.items.push({
 				item: req.body.product_id,

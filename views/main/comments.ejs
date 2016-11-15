@@ -7,11 +7,11 @@
 					
 					<div id="comments" data-animate="fadeInUp">
 						<h4><%= comments[0].comment.length %> comentarios</h4>
-						<% for(var i=0; i<comments[0].comment.length; i++) { %>
+						<% for(var i=comments[0].comment.length-1; i >= 0; i--) { %>
 						<div class="row comment">
 							<div class="col-sm-6">
 								<h5>Nombre: <%= comments[0].comment[i].name %></h5>
-								<p class="posted"><i class="fa fa-clock-o"></i> <%= comments[0].comment[i].date %>
+								<p class="posted"><i class="fa fa-clock-o"></i> <%= moment(comments[0].comment[i].date.postedAt).format("YYYY-MM-DD HH:mm")%>
 									<br>
 								Estrellas: <%= comments[0].comment[i].grade %></p>
 								<p>Commentario: <br><%= comments[0].comment[i].comment %></p>

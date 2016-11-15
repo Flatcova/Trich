@@ -24,6 +24,7 @@ var main = require('./routes/main/index');
 var admin = require('./routes/main/admin/add');
 var comments = require('./routes/main/comments');
 var contact = require('./routes/main/contact');
+var confirmation = require('./routes/main/confirmation');
 
 var catalog = require('./routes/products/catalog');
 var product = require('./routes/products/product');
@@ -33,9 +34,9 @@ var login = require('./routes/users/login');
 var logout = require('./routes/users/logout');
 var profile = require('./routes/users/profile');
 var cart = require('./routes/users/cart');
-// var orders = require('./routes/users/orders');
+var orders = require('./routes/users/orders');
 var wishlist = require('./routes/users/wishlist');
-// var history = require('./routes/users/history');
+
 
 var configDB = require('./config/database.js');
 
@@ -100,8 +101,8 @@ app.use('/profile', profile);
 
 app.use('/cart', cart);
 app.use('/wishlist', wishlist);
-// app.use('/orders', orders);
-// app.use('/history', history);
+app.use('/orders', express.static(__dirname + '/public'), orders);
+app.use('/order-confirmation', confirmation);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

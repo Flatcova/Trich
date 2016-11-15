@@ -1,16 +1,15 @@
 <% layout('layout') -%>
 
 <div id="all">
+
         <div id="content">
             <div class="container">
 
                 <div class="col-md-3">
-                    <!-- *** CUSTOMER MENU ***
- _________________________________________________________ -->
                     <div class="panel panel-default sidebar-menu">
 
                         <div class="panel-heading">
-                            <h3 class="panel-title">Menú de Usuario</h3>
+                            <h3 class="panel-title">Customer section</h3>
                         </div>
 
                         <div class="panel-body">
@@ -37,49 +36,57 @@
                         </div>
 
                     </div>
-                    <!-- /.col-md-3 -->
-
-                    <!-- *** CUSTOMER MENU END *** -->
                 </div>
 
-                <div class="col-md-9">
+                <div class="col-md-9" id="customer-order">
                     <div class="box">
-                        <h1>Mis Pedidos</h1>
+                        <h1>Pedido #<%= order._id %></h1>
 
-                        <p class="lead">Todos tus pedidos en un solo lugar.</p>
+                        <p class="lead">Fue realizado el <strong><%= moment(order.date.postedAt).format("YYYY-MM-DD") %></strong> y se encuentra <strong><%= order.status %></strong>.</p>
                         <p class="text-muted">Si tienes alguna pregunta, porfavor <a href="/contact">contactanos</a>, estamos para ayudarte.</p>
+
                         <hr>
 
                         <div class="table-responsive">
-                            <table class="table table-hover">
+                            <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>Pedido</th>
-                                        <th>Fecha</th>
-                                        <th>Total</th>
-                                        <th>Estado</th>
-                                        <th>Accion</th>
+                                        <th colspan="2">Productos</th>
+                                        <th>Cantidad</th>
+                                        <th>Precio Unitario</th>
+                                        <th colspan="2">Total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <% for (var i=0; i<orders.length; i++) { %>
-                                        <tr>
-                                            <th># <%= orders[i]._id %></th>
-                                            <td><%= moment(orders[i].date.postedAt).format("YYYY-MM-DD") %></td>
-                                            <td>$ <%= orders[i].total %></td>
-                                            <td><span class="label label-info"><%= orders[i].status %></span>
-                                            </td>
-                                            <td><a href="/orders/<%= orders[i]._id %>" class="btn btn-primary btn-sm">Ver</a>
-                                            </td>
-                                        </tr>
+                                	<% for(var i=0; i<order.items.length; i++) { %>
+                                    <tr>
+                                        <td>
+                                            <a href="product/<%= order.items[i].item._id %>">
+                                                <img src="<%= order.items[i].item.image %>" alt="<%= order.items[i].item.name %>">
+                                            </a>
+                                        </td>
+                                        <td><a href="product/<%= order.items[i].item._id %>"><%= order.items[i].item.name %></a>
+                                        </td>
+                                        <td><%= order.items[i].quantity %></td>
+                                        <td>$<%= order.items[i].item.price %></td>
+                                        <td>$<%= order.items[i].price %></td>
+                                    </tr>
                                     <% } %>
                                 </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th colspan="5" class="text-right">Subtotal</th>
+                                        <th>$<%= order.total %></th>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="5" class="text-right">Total</th>
+                                        <th>$<%= order.total %></th>
+                                    </tr>
+                                </tfoot>
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
-		</div>
-        <!-- /.container -->
+        </div>
     </div>
-</div>

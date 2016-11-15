@@ -89,12 +89,14 @@
                             </tbody>
                         </table>
                     </div>
+                    <% if (cart.total !== 0) {%>
                     <div class="box-footer">
-                        <div >
-                            <button type="submit" class="btn btn-primary">Realizar Pago <i class="fa fa-chevron-right"></i>
+                        <form method="post" action="/orders/create/<%= cart._id %>">
+                            <button type="submit" class="btn btn-primary">Realizar Pedido <i class="fa fa-chevron-right"></i>
                                     </button>
-                        </div>
+                        </form>
                     </div>
+                    <% } %>
                 </div>
             </div>
         </div>
