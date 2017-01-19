@@ -74,6 +74,8 @@ mongod
 *.sln
 
 # Elastic Beanstalk Files
+.ebextensions
+.bluemix
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
