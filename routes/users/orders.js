@@ -36,7 +36,7 @@ router.get('/:id', function(req, res, next){
 			});
 	}
 });
-
+var Mailer = require('../../config/mail.js');
 router.post('/create/:idcart', function(req, res, next){
 
 	Cart.findById({ _id : req.params.idcart }, function(err, foundCart){
@@ -52,6 +52,12 @@ router.post('/create/:idcart', function(req, res, next){
 
 		order.save(function(err, neworder){
 			if (err) next(err);
+
+			Mailer.enviar("", neworder._id, function(err, send){
+				console.log(err);
+				console.log(send);
+			});
+			console.log(neworder);
 			foundCart.items=[];
 			foundCart.total=0;
 			foundCart
